@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto 10px;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+#score {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+#highscore {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #00ff88;
+    border-radius: 4px;
+    background: #0f0f23;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay-text {
+    background: rgba(15, 15, 35, 0.92);
+    padding: 30px 50px;
+    border-radius: 12px;
+    border: 2px solid #00ff88;
+    pointer-events: auto;
+}
+
+.overlay-text h2 {
+    font-size: 2rem;
+    color: #00ff88;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.controls {
+    margin-top: 16px;
+    display: none;
+}
+
+.controls-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.ctrl-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.4rem;
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.ctrl-btn:active {
+    background: rgba(0, 255, 136, 0.3);
+}
+
+@media (pointer: coarse) {
+    .controls {
+        display: block;
+    }
+}
+
+@media (max-width: 440px) {
+    canvas {
+        width: 95vw;
+        height: 95vw;
+    }
+}
