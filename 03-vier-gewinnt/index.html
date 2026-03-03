@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vier Gewinnt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vier Gewinnt</h1>
+
+        <!-- Statusanzeige: Wer ist dran / Wer hat gewonnen -->
+        <div id="status" class="status">🔴 Spieler 1 ist dran</div>
+
+        <!-- Das Spielbrett — wird komplett von JavaScript erzeugt -->
+        <!-- Warum? Weil wir 7 Spalten × 6 Zeilen = 42 Felder brauchen.
+             Das per Hand in HTML zu schreiben wäre mühsam und fehleranfällig.
+             JavaScript kann das in einer Schleife automatisch machen. -->
+        <div id="board" class="board"></div>
+
+        <!-- Punktestand -->
+        <div class="scoreboard">
+            <span>🔴 Spieler 1: <span id="score1">0</span></span>
+            <span>🟡 Spieler 2: <span id="score2">0</span></span>
+        </div>
+
+        <button id="newGameBtn" class="new-game-btn">Neues Spiel</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

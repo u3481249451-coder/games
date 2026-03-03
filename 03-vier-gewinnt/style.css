@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 12px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* ===== STATUS-ANZEIGE ===== */
+
+.status {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    min-height: 40px;
+}
+
+/* ===== DAS SPIELBRETT ===== */
+
+.board {
+    /*
+      CSS Grid = perfekt für Gitter-Layouts (Zeilen × Spalten).
+      Wie eine Excel-Tabelle: Wir definieren Spalten und Zeilen,
+      und die Kinder-Elemente füllen die Zellen automatisch.
+    */
+    display: grid;
+    grid-template-columns: repeat(7, 56px);
+    /* repeat(7, 56px) = 7 Spalten, jede 56px breit */
+    grid-template-rows: repeat(6, 56px);
+    /* 6 Zeilen, jede 56px hoch */
+    gap: 4px;                  /* Abstand zwischen den Zellen */
+    background: #1a3a8a;       /* Blaues Brett (wie das echte Spiel) */
+    padding: 10px;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+    width: fit-content;        /* Nur so breit wie nötig */
+    box-shadow: 0 4px 20px rgba(26, 58, 138, 0.5);
+}
+
+/* ===== EINZELNE ZELLE (ein Loch im Brett) ===== */
+
+.cell {
+    width: 56px;
+    height: 56px;
+    background: #0f0f23;       /* Dunkles Loch */
+    border-radius: 50%;        /* 50% = perfekter Kreis */
+    cursor: pointer;
+    transition: background 0.2s;
+    /* transition = weicher Übergang wenn sich die Farbe ändert */
+}
+
+/* Hover-Effekt: Spalte hervorheben */
+.cell:hover {
+    background: #2a2a4e;
+}
+
+/* Spieler 1 = Rot */
+.cell.player1 {
+    background: #ff4444;
+    box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 68, 68, 0.4);
+    /* inset = Schatten INNERHALB des Elements (gibt 3D-Effekt) */
+    /* Zweiter Schatten = Leuchten nach außen */
+}
+
+/* Spieler 2 = Gelb */
+.cell.player2 {
+    background: #ffd700;
+    box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+/* Gewinner-Steine hervorheben */
+.cell.winning {
+    animation: pulse 0.6s infinite alternate;
+    /* animation = wiederholte Bewegung */
+    /* pulse = Name der Animation (unten definiert) */
+    /* 0.6s = Dauer */
+    /* infinite = unendlich wiederholen */
+    /* alternate = hin und zurück */
+}
+
+/*
+  @keyframes = definiert eine Animation Schritt für Schritt.
+  "from" = Startzustand, "to" = Endzustand.
+  Der Browser berechnet alles dazwischen automatisch.
+*/
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* Animation: Stein fällt von oben */
+.cell.drop {
+    animation: dropIn 0.3s ease-out;
+    /* ease-out = am Anfang schnell, am Ende langsam (wie Gravitation) */
+}
+
+@keyframes dropIn {
+    from { transform: translateY(-200px); }
+    /* translateY = vertikal verschieben, -200px = 200px nach oben */
+    to { transform: translateY(0); }
+}
+
+/* ===== SCOREBOARD ===== */
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+#score1 { color: #ff4444; font-weight: bold; }
+#score2 { color: #ffd700; font-weight: bold; }
+
+/* ===== NEUES SPIEL ===== */
+
+.new-game-btn {
+    padding: 10px 28px;
+    font-size: 1rem;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffd700;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.new-game-btn:hover {
+    background: rgba(255, 215, 0, 0.15);
+}
+
+/* ===== RESPONSIVE (kleine Bildschirme) ===== */
+
+@media (max-width: 480px) {
+    .board {
+        grid-template-columns: repeat(7, 44px);
+        grid-template-rows: repeat(6, 44px);
+    }
+    .cell {
+        width: 44px;
+        height: 44px;
+    }
+}
