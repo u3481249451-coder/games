@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #ff6f00;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 111, 0, 0.3);
+}
+
+/* ===== HUD (Info-Leiste) ===== */
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#score { color: #ff6f00; font-weight: bold; }
+#level { color: #40c4ff; font-weight: bold; }
+#lives { color: #ff5252; }
+
+/* ===== CANVAS ===== */
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #ff6f00;
+    border-radius: 4px;
+    background: #0a0a1a;
+    box-shadow: 0 0 30px rgba(255, 111, 0, 0.1);
+}
+
+/* ===== STATUS ===== */
+
+.status {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #888;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 640px) {
+    canvas {
+        width: 95vw;
+        height: 79vw;
+    }
+    .hud {
+        width: 95vw;
+        font-size: 0.85rem;
+    }
+}
