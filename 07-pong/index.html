@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pong</h1>
+
+        <!-- Modus-Auswahl -->
+        <div class="mode-select">
+            <button class="mode-btn active" data-mode="cpu">Gegen CPU</button>
+            <button class="mode-btn" data-mode="local">2 Spieler</button>
+        </div>
+
+        <div id="status" class="status">Drücke Leertaste oder tippe zum Starten</div>
+
+        <!--
+          Canvas = eine "Leinwand" auf der wir mit JavaScript zeichnen.
+          Anders als HTML-Elemente zeichnen wir hier Pixel für Pixel.
+          Perfekt für Spiele mit Bewegung (Ball, Schläger).
+
+          Bei Pong nutzen wir Canvas statt HTML-Elemente, weil:
+          - Der Ball sich 60x pro Sekunde bewegt
+          - Wir Kollisionen pixel-genau berechnen
+          - Es performanter ist als DOM-Manipulation
+        -->
+        <canvas id="gameCanvas" width="600" height="400"></canvas>
+
+        <div class="controls-info">
+            <span>Spieler 1: W / S</span>
+            <span>Spieler 2: ↑ / ↓</span>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

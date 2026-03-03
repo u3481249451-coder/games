@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #76ff03;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(118, 255, 3, 0.3);
+}
+
+/* ===== MODUS ===== */
+
+.mode-select {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.mode-btn {
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    border: 2px solid #555;
+    border-radius: 20px;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    border-color: #76ff03;
+    color: #76ff03;
+    background: rgba(118, 255, 3, 0.1);
+}
+
+/* ===== STATUS ===== */
+
+.status {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #aaa;
+}
+
+/* ===== CANVAS ===== */
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #76ff03;
+    border-radius: 4px;
+    background: #0a0a1a;
+    box-shadow: 0 0 30px rgba(118, 255, 3, 0.1);
+}
+
+/* ===== STEUERUNG-INFO ===== */
+
+.controls-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 10px auto 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 640px) {
+    canvas {
+        width: 95vw;
+        height: 63vw;
+        /* Seitenverhältnis beibehalten: 600:400 = 3:2 */
+    }
+    .controls-info {
+        width: 95vw;
+    }
+}
