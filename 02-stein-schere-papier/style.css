@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 36px;
+    border-radius: 16px;
+    max-width: 460px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #e040fb;
+    margin-bottom: 16px;
+    text-shadow: 0 0 20px rgba(224, 64, 251, 0.3);
+}
+
+/* ===== MODUS-AUSWAHL ===== */
+
+.mode-select {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border: 2px solid #555;
+    border-radius: 20px;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    /* .active = der aktuell gewählte Modus */
+    border-color: #e040fb;
+    color: #e040fb;
+    background: rgba(224, 64, 251, 0.1);
+}
+
+/* ===== SCOREBOARD ===== */
+
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.score-player {
+    display: flex;
+    flex-direction: column;  /* Elemente untereinander statt nebeneinander */
+    align-items: center;
+    gap: 4px;
+}
+
+.score-label {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;  /* Alles in Großbuchstaben */
+    letter-spacing: 2px;
+}
+
+.score-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.score-vs {
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+}
+
+/* ===== KAMPF-ANZEIGE ===== */
+
+.battle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    min-height: 120px;
+}
+
+.fighter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.fighter-emoji {
+    font-size: 3.5rem;
+    /* Animation: leichtes Wackeln bei Auswahl */
+    transition: transform 0.3s;
+}
+
+.fighter-emoji.pop {
+    /* .pop = kurze Vergrößerung als Feedback */
+    transform: scale(1.3);
+}
+
+.fighter-label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vs-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #aaa;
+    min-width: 100px;
+}
+
+.vs-text.win { color: #00ff88; }    /* Gewonnen = grün */
+.vs-text.lose { color: #ff4444; }   /* Verloren = rot */
+.vs-text.draw { color: #ffaa00; }   /* Unentschieden = gelb */
+
+/* ===== AUSWAHLKNÖPFE ===== */
+
+.choices {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.choice-btn {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+    border: 2px solid #444;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.choice-btn:hover {
+    border-color: #e040fb;
+    background: rgba(224, 64, 251, 0.1);
+    transform: scale(1.1);    /* Leicht vergrößern */
+}
+
+.choice-btn:disabled {
+    opacity: 0.4;              /* Halbtransparent wenn deaktiviert */
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== VERLAUF ===== */
+
+.history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    min-height: 24px;
+    margin-bottom: 12px;
+}
+
+.round-tag {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.round-tag.win {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+}
+
+.round-tag.lose {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff4444;
+}
+
+.round-tag.draw {
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffaa00;
+}
+
+/* ===== NEUES SPIEL ===== */
+
+.new-game-btn {
+    padding: 10px 28px;
+    font-size: 1rem;
+    border: 2px solid #e040fb;
+    border-radius: 8px;
+    background: transparent;
+    color: #e040fb;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.new-game-btn:hover {
+    background: rgba(224, 64, 251, 0.15);
+}
+
+.hidden {
+    display: none;
+}

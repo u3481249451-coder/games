@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stein Schere Papier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stein Schere Papier</h1>
+
+        <!-- Modus-Auswahl: Einzelrunde oder Best-of-5 -->
+        <div class="mode-select">
+            <button class="mode-btn active" data-mode="single">Einzelrunde</button>
+            <!-- data-mode = ein eigenes Attribut (data-*), um Werte im HTML zu speichern -->
+            <!-- active = CSS-Klasse, die zeigt welcher Modus gerade gewählt ist -->
+            <button class="mode-btn" data-mode="bo5">Best of 5</button>
+        </div>
+
+        <!-- Punktestand -->
+        <div class="scoreboard">
+            <div class="score-player">
+                <span class="score-label">Du</span>
+                <span class="score-value" id="playerScore">0</span>
+            </div>
+            <div class="score-vs">VS</div>
+            <div class="score-player">
+                <span class="score-label">CPU</span>
+                <span class="score-value" id="cpuScore">0</span>
+            </div>
+        </div>
+
+        <!-- Kampf-Anzeige: zeigt die Wahl beider Spieler -->
+        <div class="battle">
+            <div class="fighter">
+                <span class="fighter-emoji" id="playerChoice">❓</span>
+                <span class="fighter-label">Du</span>
+            </div>
+            <div class="vs-text" id="resultText">Wähle!</div>
+            <div class="fighter">
+                <span class="fighter-emoji" id="cpuChoice">❓</span>
+                <span class="fighter-label">CPU</span>
+            </div>
+        </div>
+
+        <!-- Die 3 Auswahlknöpfe -->
+        <div class="choices">
+            <button class="choice-btn" data-choice="stein">🪨</button>
+            <button class="choice-btn" data-choice="schere">✂️</button>
+            <button class="choice-btn" data-choice="papier">📄</button>
+        </div>
+
+        <!-- Verlauf der Runden -->
+        <div id="history" class="history"></div>
+
+        <!-- Neues Spiel Button (anfangs versteckt) -->
+        <button id="newGameBtn" class="new-game-btn hidden">Neues Spiel</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
