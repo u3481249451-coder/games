@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 36px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #00bcd4;
+    margin-bottom: 14px;
+    text-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+}
+
+/* ===== MODUS & SCHWIERIGKEIT ===== */
+
+.mode-select, .difficulty {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.mode-btn, .diff-btn {
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    border: 2px solid #555;
+    border-radius: 20px;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    border-color: #00bcd4;
+    color: #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.diff-btn.active {
+    border-color: #ff9800;
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.difficulty.hidden {
+    display: none;
+}
+
+/* ===== STATUS ===== */
+
+.status {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+/* ===== DAS SPIELFELD ===== */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 6px;
+    margin: 0 auto 16px;
+    width: fit-content;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    /* user-select: none = Text kann nicht markiert werden (störend bei Klicks) */
+}
+
+.cell:hover:not(.taken) {
+    /*
+      :not(.taken) = NUR wenn die Zelle NICHT die Klasse "taken" hat.
+      So leuchtet ein bereits belegtes Feld nicht mehr auf.
+    */
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+/* X = Cyan/Blau */
+.cell.x {
+    color: #00bcd4;
+    text-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+}
+
+/* O = Orange */
+.cell.o {
+    color: #ff9800;
+    text-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+}
+
+/* Gewinner-Linie hervorheben */
+.cell.winning {
+    animation: glow 0.5s infinite alternate;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+/* Erscheinungs-Animation */
+.cell.placed {
+    animation: popIn 0.25s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* ===== SCOREBOARD ===== */
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: #aaa;
+}
+
+#scoreX { color: #00bcd4; font-weight: bold; }
+#scoreO { color: #ff9800; font-weight: bold; }
+#scoreDraw { color: #888; font-weight: bold; }
+
+/* ===== NEUES SPIEL ===== */
+
+.new-game-btn {
+    padding: 10px 28px;
+    font-size: 1rem;
+    border: 2px solid #00bcd4;
+    border-radius: 8px;
+    background: transparent;
+    color: #00bcd4;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.new-game-btn:hover {
+    background: rgba(0, 188, 212, 0.15);
+}

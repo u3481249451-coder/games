@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+
+        <!-- Modus-Auswahl: gegen Freund oder gegen CPU -->
+        <div class="mode-select">
+            <button class="mode-btn active" data-mode="cpu">Gegen CPU</button>
+            <button class="mode-btn" data-mode="local">2 Spieler</button>
+        </div>
+
+        <!-- Schwierigkeitsgrad (nur bei CPU-Modus sichtbar) -->
+        <div class="difficulty" id="difficulty">
+            <button class="diff-btn active" data-diff="easy">Leicht</button>
+            <button class="diff-btn" data-diff="hard">Schwer</button>
+            <!-- Leicht = CPU wählt zufällig
+                 Schwer = CPU nutzt den Minimax-Algorithmus (unschlagbar!) -->
+        </div>
+
+        <div id="status" class="status">❌ Du bist dran</div>
+
+        <!-- Das 3×3 Spielfeld -->
+        <div id="board" class="board">
+            <!-- 9 Felder — jedes mit einer Nummer von 0 bis 8:
+                 0 | 1 | 2
+                 ---------
+                 3 | 4 | 5
+                 ---------
+                 6 | 7 | 8
+            -->
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <div class="scoreboard">
+            <span>❌: <span id="scoreX">0</span></span>
+            <span>Unentschieden: <span id="scoreDraw">0</span></span>
+            <span>⭕: <span id="scoreO">0</span></span>
+        </div>
+
+        <button id="newGameBtn" class="new-game-btn">Neues Spiel</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
