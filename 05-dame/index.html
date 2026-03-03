@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dame</h1>
+        <div id="status" class="status">🔴 Rot ist dran</div>
+
+        <!-- Das 8×8 Spielbrett — wird von JavaScript erzeugt -->
+        <div id="board" class="board"></div>
+
+        <div class="scoreboard">
+            <span>🔴 Rot: <span id="scoreRed">12</span> Steine</span>
+            <span>⚫ Schwarz: <span id="scoreBlack">12</span> Steine</span>
+        </div>
+
+        <button id="newGameBtn" class="new-game-btn">Neues Spiel</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #e57373;
+    margin-bottom: 12px;
+    text-shadow: 0 0 20px rgba(229, 115, 115, 0.3);
+}
+
+.status {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+/* ===== SPIELBRETT ===== */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 52px);
+    grid-template-rows: repeat(8, 52px);
+    margin: 0 auto 14px;
+    width: fit-content;
+    border: 3px solid #5d4037;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Helle Felder */
+.cell {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* position: relative = Kinder mit position:absolute werden relativ HIERZU positioniert */
+}
+
+.cell.light {
+    background: #d7ccc8;
+    /* Helles Beige — wie ein echtes Brett */
+}
+
+.cell.dark {
+    background: #5d4037;
+    /* Dunkles Braun */
+    cursor: pointer;
+}
+
+/* Markierung: Mögliche Züge anzeigen */
+.cell.valid-move {
+    /* Ein halbtransparenter grüner Kreis zeigt wo du hinziehen darfst */
+    cursor: pointer;
+}
+
+.cell.valid-move::after {
+    /*
+      ::after = ein "Pseudo-Element" — ein unsichtbares Kinder-Element,
+      das wir per CSS stylen können. Perfekt für Dekorationen.
+    */
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: rgba(76, 175, 80, 0.5);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.valid-capture::after {
+    /* Bei Sprung-Zügen: größerer, roter Kreis */
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 82, 82, 0.3);
+    border: 2px solid rgba(255, 82, 82, 0.6);
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* ===== SPIELSTEINE ===== */
+
+.piece {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s;
+    position: relative;
+    z-index: 1;
+    /* z-index = Stapelung. Höhere Zahl = weiter vorne */
+}
+
+.piece:hover {
+    transform: scale(1.1);
+}
+
+/* Roter Stein */
+.piece.red {
+    background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828);
+    /*
+      radial-gradient = kreisförmiger Farbverlauf
+      Erzeugt einen 3D-Effekt: oben-links hell, unten-rechts dunkel
+    */
+    border: 2px solid #b71c1c;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Schwarzer Stein */
+.piece.black {
+    background: radial-gradient(circle at 35% 35%, #616161, #212121);
+    border: 2px solid #111;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Ausgewählter Stein */
+.piece.selected {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.7), 0 3px 6px rgba(0, 0, 0, 0.4);
+    /* Doppelter Schatten: gelbes Leuchten + normaler Schatten */
+}
+
+/* Dame-Stein: bekommt eine Krone (★) */
+.piece.king::after {
+    content: '♔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* translate(-50%, -50%) = perfekt zentrieren */
+    font-size: 1.4rem;
+    color: #ffd700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation wenn ein Stein sich bewegt */
+.piece.moving {
+    transition: none;
+    animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== SCOREBOARD ===== */
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+}
+
+#scoreRed { color: #ff5252; font-weight: bold; }
+#scoreBlack { color: #bbb; font-weight: bold; }
+
+/* ===== NEUES SPIEL ===== */
+
+.new-game-btn {
+    padding: 10px 28px;
+    font-size: 1rem;
+    border: 2px solid #e57373;
+    border-radius: 8px;
+    background: transparent;
+    color: #e57373;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.new-game-btn:hover {
+    background: rgba(229, 115, 115, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+    .board {
+        grid-template-columns: repeat(8, 42px);
+        grid-template-rows: repeat(8, 42px);
+    }
+    .cell { width: 42px; height: 42px; }
+    .piece { width: 32px; height: 32px; }
+}
