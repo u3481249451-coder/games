@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schach</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Schach</h1>
+        <div id="status" class="status">♙ Weiß ist am Zug</div>
+
+        <!-- Das 8×8 Schachbrett — wird von JavaScript erzeugt -->
+        <div id="board" class="board"></div>
+
+        <!-- Anzeige für geschlagene Figuren -->
+        <div class="captured">
+            <div class="captured-row">
+                <span class="captured-label">Geschlagen:</span>
+                <span id="capturedWhite" class="captured-pieces"></span>
+            </div>
+            <div class="captured-row">
+                <span class="captured-label">Geschlagen:</span>
+                <span id="capturedBlack" class="captured-pieces"></span>
+            </div>
+        </div>
+
+        <!-- Bauernumwandlung — erscheint wenn ein Bauer die andere Seite erreicht -->
+        <div id="promotion" class="promotion hidden">
+            <p>Bauer umwandeln in:</p>
+            <div class="promo-choices" id="promoChoices"></div>
+        </div>
+
+        <button id="newGameBtn" class="new-game-btn">Neues Spiel</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
