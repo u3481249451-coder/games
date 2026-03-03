@@ -1,0 +1,182 @@
+/*
+  CSS = Cascading Style Sheets
+  Hier bestimmen wir, wie alles AUSSIEHT.
+  Jede Regel hat das Format:
+
+  selektor {
+      eigenschaft: wert;
+  }
+
+  Selektor = WAS wir stylen wollen
+  Eigenschaft = WIE wir es stylen wollen
+*/
+
+/* ===== GRUNDEINSTELLUNGEN ===== */
+
+* {
+    /* * = ALLES auf der Seite */
+    margin: 0;          /* Außenabstand auf 0 */
+    padding: 0;         /* Innenabstand auf 0 */
+    box-sizing: border-box; /* Breite inkl. Rahmen berechnen (vereinfacht vieles) */
+}
+
+body {
+    /* body = die ganze sichtbare Seite */
+    background: #1a1a2e;       /* Dunkler Hintergrund (Hex-Farbcode) */
+    color: #eee;               /* Helle Schriftfarbe */
+    font-family: 'Segoe UI', Tahoma, sans-serif;  /* Schriftart */
+    display: flex;             /* Flexbox = einfaches Zentrieren */
+    justify-content: center;   /* Horizontal zentrieren */
+    align-items: center;       /* Vertikal zentrieren */
+    min-height: 100vh;         /* Mindestens so hoch wie der Bildschirm (vh = viewport height) */
+}
+
+/* ===== CONTAINER (die Hauptbox) ===== */
+
+.container {
+    /* .container = Element mit class="container" */
+    text-align: center;        /* Text zentrieren */
+    background: rgba(255, 255, 255, 0.05); /* Leicht heller als Hintergrund (rgba = Farbe mit Transparenz) */
+    padding: 40px;             /* Innenabstand */
+    border-radius: 16px;       /* Abgerundete Ecken */
+    max-width: 420px;          /* Maximale Breite */
+    width: 90%;                /* Auf kleinen Bildschirmen 90% Breite */
+}
+
+/* ===== ÜBERSCHRIFT ===== */
+
+h1 {
+    font-size: 2.2rem;         /* Schriftgröße (rem = relativ zur Browser-Standardgröße) */
+    color: #00b4d8;            /* Blauer Farbton */
+    margin-bottom: 16px;
+}
+
+/* ===== NACHRICHT (der Hinweistext) ===== */
+
+#message {
+    /* # = Element mit einer bestimmten ID */
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    min-height: 50px;          /* Mindesthöhe, damit die Box nicht springt */
+    color: #ccc;
+}
+
+/* ===== EINGABEBEREICH ===== */
+
+.input-area {
+    display: flex;             /* Eingabefeld und Button nebeneinander */
+    gap: 8px;                  /* Abstand zwischen den Elementen */
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+input {
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    border: 2px solid #00b4d8;
+    border-radius: 8px;
+    background: #0f0f23;       /* Dunkler Hintergrund */
+    color: #fff;
+    width: 150px;
+    outline: none;             /* Kein blauer Rahmen beim Klicken */
+    text-align: center;
+}
+
+input:focus {
+    /* :focus = wenn der Nutzer ins Feld klickt */
+    border-color: #00ff88;     /* Rahmen wird grün */
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); /* Leuchten */
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border: 2px solid #00b4d8;
+    border-radius: 8px;
+    background: #00b4d8;
+    color: #1a1a2e;
+    cursor: pointer;           /* Mauszeiger wird zur Hand */
+    font-weight: bold;
+    transition: all 0.2s;      /* Weicher Übergang bei Hover */
+}
+
+button:hover {
+    /* :hover = wenn die Maus drüber fährt */
+    background: #00ff88;
+    border-color: #00ff88;
+}
+
+/* ===== INFO-ZEILE (Versuche & Rekord) ===== */
+
+.info {
+    display: flex;
+    justify-content: space-around; /* Gleichmäßig verteilen */
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: #aaa;
+}
+
+#attempts {
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+#record {
+    color: #ffaa00;            /* Gold für den Rekord */
+    font-weight: bold;
+}
+
+/* ===== VERLAUF (bisherige Versuche) ===== */
+
+.history {
+    display: flex;
+    flex-wrap: wrap;           /* Wenn kein Platz, nächste Zeile */
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 16px;
+    min-height: 30px;
+}
+
+.guess-tag {
+    /* Jeder einzelne Versuch als kleines Label */
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.guess-tag.too-low {
+    /* Zahl war zu niedrig = blau */
+    background: rgba(0, 180, 216, 0.2);
+    color: #00b4d8;
+    border: 1px solid #00b4d8;
+}
+
+.guess-tag.too-high {
+    /* Zahl war zu hoch = rot */
+    background: rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+    border: 1px solid #ff4444;
+}
+
+.guess-tag.correct {
+    /* Richtig = grün */
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+/* ===== NEUES SPIEL BUTTON ===== */
+
+.new-game-btn {
+    margin-top: 10px;
+    background: transparent;
+    border-color: #00ff88;
+    color: #00ff88;
+}
+
+/* ===== HILFKLASSE ===== */
+
+.hidden {
+    display: none;             /* Element komplett verstecken */
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+  DOCTYPE sagt dem Browser: "Das hier ist eine moderne Webseite (HTML5)."
+  Ohne das könnte der Browser die Seite falsch darstellen.
+-->
+<html lang="de">
+<!-- lang="de" sagt dem Browser: Die Seite ist auf Deutsch -->
+
+<head>
+    <!-- HEAD = unsichtbarer Bereich. Hier laden wir Einstellungen & Dateien -->
+    <meta charset="UTF-8">
+    <!-- charset="UTF-8" erlaubt Sonderzeichen wie ä, ö, ü, ß -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Damit sieht die Seite auch auf dem Handy gut aus -->
+
+    <title>Zahlenraten</title>
+    <!-- Der Text, der oben im Browser-Tab steht -->
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Hier laden wir unsere CSS-Datei (das Aussehen) -->
+</head>
+
+<body>
+    <!-- BODY = sichtbarer Bereich. Alles was der Spieler sieht kommt hier rein -->
+
+    <div class="container">
+        <!-- div = eine unsichtbare Box, um Inhalte zu gruppieren -->
+        <!-- class="container" = ein Name, damit wir die Box in CSS stylen können -->
+
+        <h1>Zahlenraten</h1>
+        <!-- h1 = Hauptüberschrift (h1 = größte, h6 = kleinste) -->
+
+        <p id="message">Ich denke an eine Zahl zwischen 1 und 100. Rate!</p>
+        <!-- p = Absatz (Paragraph) für Text -->
+        <!-- id="message" = eine eindeutige ID, damit JavaScript diesen Text ändern kann -->
+
+        <div class="input-area">
+            <input type="number" id="guessInput" min="1" max="100" placeholder="Deine Zahl...">
+            <!-- input = Eingabefeld -->
+            <!-- type="number" = nur Zahlen erlaubt -->
+            <!-- min/max = Bereich 1-100 -->
+            <!-- placeholder = grauer Hinweistext im leeren Feld -->
+
+            <button id="guessBtn">Raten!</button>
+            <!-- button = ein klickbarer Knopf -->
+        </div>
+
+        <div class="info">
+            <span>Versuche: <span id="attempts">0</span></span>
+            <!-- span = kleiner Textbaustein (bleibt in einer Zeile) -->
+            <!-- Verschachtelt: der innere span zeigt die Zahl, die JavaScript ändert -->
+
+            <span>Rekord: <span id="record">-</span></span>
+        </div>
+
+        <div id="history" class="history"></div>
+        <!-- Hier zeigen wir die bisherigen Versuche an -->
+
+        <button id="newGameBtn" class="new-game-btn hidden">Neues Spiel</button>
+        <!-- hidden = unsichtbar am Anfang, wird erst nach Gewinn sichtbar -->
+    </div>
+
+    <script src="game.js"></script>
+    <!-- Ganz am Ende laden wir JavaScript, damit alle HTML-Elemente schon existieren -->
+</body>
+</html>
