@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top-Down Shooter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- START SCREEN -->
+    <div id="startScreen" class="screen">
+      <h1>TOP-DOWN SHOOTER</h1>
+      <p class="subtitle">Überlebe so lange wie möglich!</p>
+      <div class="controls-info">
+        <div class="control-row"><span class="key">WASD</span> Bewegung</div>
+        <div class="control-row"><span class="key">Maus</span> Zielen</div>
+        <div class="control-row"><span class="key">LMB</span> Schießen</div>
+        <div class="control-row"><span class="key">R</span> Nachladen</div>
+        <div class="control-row"><span class="key">1–3</span> Waffe wechseln</div>
+      </div>
+      <button id="startBtn" class="btn">SPIELEN</button>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="gameOverScreen" class="screen hidden">
+      <h1 id="gameOverTitle">GAME OVER</h1>
+      <div id="finalStats">
+        <div class="stat-row"><span class="stat-label">Welle</span><span id="finalWave" class="stat-value">0</span></div>
+        <div class="stat-row"><span class="stat-label">Score</span><span id="finalScore" class="stat-value">0</span></div>
+        <div class="stat-row"><span class="stat-label">Kills</span><span id="finalKills" class="stat-value">0</span></div>
+        <div class="stat-row"><span class="stat-label">Highscore</span><span id="highScore" class="stat-value">0</span></div>
+      </div>
+      <button id="restartBtn" class="btn">NOCHMAL</button>
+    </div>
+
+    <!-- GAME CANVAS -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div id="hudLeft">
+        <div id="healthBar">
+          <div id="healthFill"></div>
+          <span id="healthText">100 HP</span>
+        </div>
+        <div id="ammoDisplay">
+          <span id="ammoCount">30</span><span id="ammoSep">/</span><span id="ammoMax">30</span>
+          <span id="reloadText" class="hidden">NACHLADEN…</span>
+        </div>
+        <div id="weaponDisplay">
+          <span id="weaponName">Pistole</span>
+        </div>
+      </div>
+      <div id="hudCenter">
+        <div id="waveDisplay">Welle <span id="waveNum">1</span></div>
+        <div id="waveStatus"></div>
+      </div>
+      <div id="hudRight">
+        <div id="scoreDisplay"><span id="scoreNum">0</span></div>
+        <div id="killDisplay">Kills: <span id="killNum">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
