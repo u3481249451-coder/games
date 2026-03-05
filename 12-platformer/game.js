@@ -791,7 +791,6 @@ function drawPlayer() {
 }
 
 // ── GAME LOOP ─────────────────────────────────
-let running  = false;
 let lastTime = 0;
 
 function update(dt) {
