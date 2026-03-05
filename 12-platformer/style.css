@@ -1,0 +1,195 @@
+/* ── Reset ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0d0d1a;
+  font-family: 'Courier New', monospace;
+  color: #e0e0e0;
+  overflow: hidden;
+  user-select: none;
+}
+
+#app { position: relative; width: 100vw; height: 100vh; }
+
+#gameCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* ── Screens ────────────────────────────────── */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: rgba(10, 10, 26, 0.95);
+  z-index: 100;
+}
+
+.screen h1 {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #4ecdc4;
+  text-shadow: 0 0 20px #4ecdc4, 0 0 50px rgba(78,205,196,0.35);
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 0.06em;
+}
+
+/* ── Controls info ─────────────────────────── */
+.controls-info {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 18px 32px;
+  min-width: 320px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.key {
+  display: inline-block;
+  background: #1e1e3a;
+  border: 1px solid #4ecdc4;
+  border-radius: 4px;
+  padding: 2px 9px;
+  font-size: 0.82rem;
+  color: #4ecdc4;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── Stats ──────────────────────────────────── */
+#levelStats, #finalStats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 20px 40px;
+  min-width: 260px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 1rem;
+}
+
+.stat-label { color: #888; }
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f1c40f;
+}
+
+/* ── Button ─────────────────────────────────── */
+.btn {
+  background: transparent;
+  border: 2px solid #4ecdc4;
+  color: #4ecdc4;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 13px 48px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: #4ecdc4;
+  color: #0d0d1a;
+  box-shadow: 0 0 22px rgba(78,205,196,0.55);
+}
+
+/* ── HUD ─────────────────────────────────────── */
+#hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  padding: 14px 18px;
+  gap: 12px;
+}
+
+#hudLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#livesDisplay {
+  display: flex;
+  gap: 4px;
+}
+
+.life-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+
+.life-icon.alive { color: #e94560; text-shadow: 0 0 8px #e94560; }
+.life-icon.dead  { color: #333; text-shadow: none; }
+
+#levelLabel {
+  font-size: 0.85rem;
+  color: #888;
+  letter-spacing: 0.06em;
+}
+
+#hudCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#starsDisplay {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f1c40f;
+  text-shadow: 0 0 10px rgba(241,196,15,0.5);
+  letter-spacing: 0.08em;
+}
+
+#hudRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#timerDisplay {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 0.06em;
+}

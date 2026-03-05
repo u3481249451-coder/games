@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platformer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- START SCREEN -->
+    <div id="startScreen" class="screen">
+      <h1>PLATFORMER</h1>
+      <p class="subtitle">Sammle alle Sterne – erreiche das Ziel!</p>
+      <div class="controls-info">
+        <div class="control-row"><span class="key">← →</span> Bewegen</div>
+        <div class="control-row"><span class="key">Leertaste / ↑ / W</span> Springen</div>
+        <div class="control-row"><span class="key">Doppel-Sprung</span> in der Luft nochmal springen</div>
+        <div class="control-row"><span class="key">↓ / S</span> durch Plattform fallen</div>
+        <div class="control-row"><span class="key">R</span> Level neu starten</div>
+      </div>
+      <button id="startBtn" class="btn">SPIELEN</button>
+    </div>
+
+    <!-- LEVEL COMPLETE -->
+    <div id="levelCompleteScreen" class="screen hidden">
+      <h1 id="levelCompleteTitle">LEVEL GESCHAFFT!</h1>
+      <div id="levelStats">
+        <div class="stat-row"><span class="stat-label">Zeit</span>     <span id="lcTime"  class="stat-value">0s</span></div>
+        <div class="stat-row"><span class="stat-label">Sterne</span>   <span id="lcStars" class="stat-value">0/0</span></div>
+        <div class="stat-row"><span class="stat-label">Tode</span>     <span id="lcDeaths" class="stat-value">0</span></div>
+      </div>
+      <button id="nextLevelBtn" class="btn">WEITER</button>
+    </div>
+
+    <!-- GAME OVER / WIN -->
+    <div id="gameOverScreen" class="screen hidden">
+      <h1 id="gameOverTitle">SPIEL BEENDET</h1>
+      <div id="finalStats">
+        <div class="stat-row"><span class="stat-label">Level</span>   <span id="goLevel" class="stat-value">1</span></div>
+        <div class="stat-row"><span class="stat-label">Sterne</span>  <span id="goStars" class="stat-value">0</span></div>
+        <div class="stat-row"><span class="stat-label">Tode</span>    <span id="goDeaths" class="stat-value">0</span></div>
+      </div>
+      <button id="restartBtn" class="btn">NOCHMAL</button>
+    </div>
+
+    <!-- CANVAS -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div id="hudLeft">
+        <div id="livesDisplay">
+          <span id="livesIcons"></span>
+        </div>
+        <div id="levelLabel">Level <span id="levelNum">1</span></div>
+      </div>
+      <div id="hudCenter">
+        <div id="starsDisplay">★ <span id="starsCollected">0</span> / <span id="starsTotal">0</span></div>
+      </div>
+      <div id="hudRight">
+        <div id="timerDisplay"><span id="timerNum">0</span>s</div>
+      </div>
+    </div>
+
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
